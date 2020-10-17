@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>2049</width>
+    <height>845</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">border-image:url(:/image/back.png)</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton_l">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>480</y>
+      <width>271</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/image/bu.png);
+color:rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>左转</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_r">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>520</y>
+      <width>301</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/image/bu.png);
+color:rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>右转</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_f">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>280</y>
+      <width>281</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/image/bu.png);
+color:rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>前</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_b">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>680</y>
+      <width>261</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/image/bu.png);
+color:rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>后</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_blue">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>80</y>
+      <width>371</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/image/bu.png);
+color:rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>打开蓝牙界面</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_l_5">
+    <property name="geometry">
+     <rect>
+      <x>1310</x>
+      <y>110</y>
+      <width>261</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/image/bu.png);
+color:rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>开始运动</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_pause">
+    <property name="geometry">
+     <rect>
+      <x>1310</x>
+      <y>380</y>
+      <width>261</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/image/bu.png);
+color:rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>暂停</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_restart">
+    <property name="geometry">
+     <rect>
+      <x>1310</x>
+      <y>650</y>
+      <width>261</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/image/bu.png);
+color:rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>复位</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>50</y>
+      <width>611</width>
+      <height>411</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_t_add">
+    <property name="geometry">
+     <rect>
+      <x>1800</x>
+      <y>500</y>
+      <width>261</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/image/bu.png);
+color:rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>增大步时</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_t_re">
+    <property name="geometry">
+     <rect>
+      <x>1790</x>
+      <y>710</y>
+      <width>261</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/image/bu.png);
+color:rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>减小步时</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
