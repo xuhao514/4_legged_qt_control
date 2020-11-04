@@ -3,7 +3,7 @@
 //被Bezier()调用  绘制单方向的贝赛尔曲线
 float decas(int degree,float coeff[],float t){
      int r,i;
-     float point[12];   //最大12阶贝赛尔曲线
+     float point[15];   //最大14阶贝赛尔曲线
      for(i=0;i<degree;i++){
          point[i]=coeff[i];
      }

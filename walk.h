@@ -54,6 +54,7 @@ private:
 
     void isSpeedChange();
     void speedChange(float _dt);
+    void balanceYaw();
 };
 
 

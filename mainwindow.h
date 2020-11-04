@@ -41,7 +41,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    RunThread run_thread;
+    RunThread* run_thread;
 
     void showTwist();
 };

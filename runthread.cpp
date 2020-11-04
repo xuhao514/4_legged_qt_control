@@ -61,6 +61,7 @@ void RunThread::getMsg()
           if(data_process.dataDecode<YPR>(_data,&ypr_data) )
           {
            // printf("yaw:%f\n",ypr_data.y);
+              qDebug()<<"yaw:"<< ypr_data.y <<"\n";
           }
         }
         else if(data_process.headId() == 12)

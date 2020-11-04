@@ -20,6 +20,7 @@ public:
         pos=0;
         max_sum = 10000000;
     };
+    //增量式pid
     float pidIncUpdate(float _setNum,float _actualNum)
     {
         setNum=_setNum;
@@ -38,6 +39,7 @@ public:
 
         return incrementSpeed;
     };
+    //位置式pid
     float pidPosUpdate(float _setNum,float _actualNum)
     {
         setNum=_setNum;

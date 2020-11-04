@@ -4,7 +4,7 @@ void WalkClass::walkInit(LegClass &_legfr,LegClass &_legfl,LegClass &_legbr,LegC
 {
     car_wid = 120;
     vacc=0.001f,wacc=0.001f;    //加速度
-    t_floor_set=1000;            //设定周期
+    t_floor_set=2000;            //设定周期
     l_set = 50;
     h_set = 20;
     //l_set=v_now*t_floor_set;
@@ -16,10 +16,16 @@ void WalkClass::walkInit(LegClass &_legfr,LegClass &_legfl,LegClass &_legbr,LegC
 
     pidYaw.PidInit(1,0.5f,0.05,0.0f,2.f,1.f);
 
-    walkFr.init(_legfr,11,85,l_set,h_set,t_floor_set,1, 3.0/2, 1.0, 12,1);
-    walkFl.init(_legfl,11,85,l_set,h_set,t_floor_set,1, 3.0/2, 0  , 12,1);
-    walkBr.init(_legbr,11,85,l_set,h_set,t_floor_set,1, 3.0/2, 0  , 12,1);
-    walkBl.init(_legbl,11,85,l_set,h_set,t_floor_set,1, 3.0/2, 1.0, 12,1);
+    walkFr.init(_legfr,11,85,l_set,h_set,t_floor_set,1, 3./4, 1.0,1);
+    walkFl.init(_legfl,11,85,l_set,h_set,t_floor_set,1, 3./4, 0  ,1);
+    walkBr.init(_legbr,11,85,l_set,h_set,t_floor_set,1, 3./4, 0  ,1);
+    walkBl.init(_legbl,11,85,l_set,h_set,t_floor_set,1, 3./4, 1.0,1);
+
+//    walkFr.init(_legfr,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 0,1);
+//    walkFl.init(_legfl,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 1./3  ,1);
+//    walkBr.init(_legbr,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 2./3  ,1);
+//    walkBl.init(_legbl,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 1.0,1);
+
 
     w_now=0; vr=vl=0;
     v_set=v_now,w_set=w_now;
@@ -58,7 +64,7 @@ void WalkClass::startAct(bool _start)
     walkBl.startAct(_start);
 }
 
-void WalkClass::reset()
+void WalkClass::reset()  //有问题 没找到
 {
     walkFr.reStart();
     walkFl.reStart();
@@ -67,6 +73,7 @@ void WalkClass::reset()
 }
 
 void WalkClass::speedChange(float _dt)
+
 {
     isSpeedChange();
     if(isSetSpeedFinished)  return;
@@ -132,4 +139,35 @@ void WalkClass::setTFloor(float _t)
     walkFl.set_t_floor(t_floor_set);
     walkBr.set_t_floor(t_floor_set);
     walkBl.set_t_floor(t_floor_set);
+}
+
+//方向角调节
+void WalkClass::balanceYaw()
+{
+    yawIncrease=pidYaw.pidIncUpdate(setYaw,*yaw_value);
+
+//    //¸Ä±ä²½³¤ //Ö»ÔÚ×ÅµØÏàµ÷½Ú²½³¤
+//	if(walkFl.phaFlag==inEffect) walkFl.L-=yawIncrease;  	  //×¢ÒâÕý¸ººÅ£¬ÓëÍÓÂÝÒÇ°²×°ÓÐ¹Ø
+//	if(walkBl.phaFlag==inEffect) walkBl.L-=yawIncrease;
+//	if(walkBr.phaFlag==inEffect) walkBr.L+=yawIncrease;
+//	if(walkFr.phaFlag==inEffect) walkFr.L+=yawIncrease;
+
+//	if(yawIncrease==0)  //Èç¹û½Ç¶ÈÆ«²îÐ¡ÓÚãÐÖµ
+//	{
+//	 if(walkFl.phaFlag==inAir)  //ÔÚÌ§ÍÈÏàÈÃÍÈ³¤·µ»ØÉè¶¨Öµ
+//		 LineToValue(&walkFl.L,walkFl.Lst,2,3);
+
+//	 if(walkBr.phaFlag==inAir)
+//		 LineToValue(&walkBr.L,walkBr.Lst,2,3);
+
+//	 if(walkFr.phaFlag==inAir)
+//		 LineToValue(&walkFr.L,walkFr.Lst,2,3);
+
+//	 if(walkBl.phaFlag==inAir)
+//		 LineToValue(&walkBl.L,walkBl.Lst,2,3);
+//	}
+//	walkFl.SetBezier(walkFl.x0,walkFl.y0,walkFl.L,walkFl.H0,walkFl.bezierLen,walkFl.forward);
+//	walkFr.SetBezier(walkFr.x0,walkFr.y0,walkFr.L,walkFr.H0,walkFr.bezierLen,walkFr.forward);
+//	walkBl.SetBezier(walkBl.x0,walkBl.y0,walkBl.L,walkBl.H0,walkBl.bezierLen,walkBl.forward);
+//	walkBr.SetBezier(walkBr.x0,walkBr.y0,walkBr.L,walkBr.H0,walkBr.bezierLen,walkBr.forward);
 }
