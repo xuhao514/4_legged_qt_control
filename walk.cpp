@@ -2,11 +2,11 @@
 
 void WalkClass::walkInit(LegClass &_legfr,LegClass &_legfl,LegClass &_legbr,LegClass &_legbl,float *_yaw_value)
 {
-    car_wid = 120;
+    car_wid = 110;
     vacc=0.001f,wacc=0.001f;    //加速度
     t_floor_set=2000;            //设定周期
     l_set = 50;
-    h_set = 20;
+    h_set = 30;
     //l_set=v_now*t_floor_set;
     v_now=l_set/t_floor_set ;   //设定速度  m/s
     V_Max_F=0.1,V_Max_B=-0.1, W_Max=0.2;
@@ -16,22 +16,21 @@ void WalkClass::walkInit(LegClass &_legfr,LegClass &_legfl,LegClass &_legbr,LegC
 
     pidYaw.PidInit(1,0.5f,0.05,0.0f,2.f,1.f);
 
-    walkFr.init(_legfr,11,85,l_set,h_set,t_floor_set,1, 3./4, 1.0,1);
-    walkFl.init(_legfl,11,85,l_set,h_set,t_floor_set,1, 3./4, 0  ,1);
-    walkBr.init(_legbr,11,85,l_set,h_set,t_floor_set,1, 3./4, 0  ,1);
-    walkBl.init(_legbl,11,85,l_set,h_set,t_floor_set,1, 3./4, 1.0,1);
+//    walkFr.init(_legfr,11,85,l_set,h_set,t_floor_set,1, 3./4, 1.0,1);
+//    walkFl.init(_legfl,11,85,l_set,h_set,t_floor_set,1, 3./4, 0  ,1);
+//    walkBr.init(_legbr,11,85,l_set,h_set,t_floor_set,1, 3./4, 0  ,1);
+//    walkBl.init(_legbl,11,85,l_set,h_set,t_floor_set,1, 3./4, 1.0,1);
 
-//    walkFr.init(_legfr,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 0,1);
-//    walkFl.init(_legfl,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 1./3  ,1);
-//    walkBr.init(_legbr,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 2./3  ,1);
-//    walkBl.init(_legbl,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 1.0,1);
-
+    walkFr.init(_legfr,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 0,1);
+    walkBr.init(_legbr,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 1.0  ,1);
+    walkFl.init(_legfl,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 2./3  ,1);
+    walkBl.init(_legbl,11,85,l_set,h_set,t_floor_set,1./3, 3./4, 1./3,1);
 
     w_now=0; vr=vl=0;
     v_set=v_now,w_set=w_now;
 
      T_F_Min=500;       //最小着地相时长
-     T_F_Max=4000;      //最大着地相时长
+     T_F_Max=40000;      //最大着地相时长
      MaxLToCalSpeed=0.200;  //m
      te_factor=0.5;   //0~1
      isSetSpeedFinished=false;

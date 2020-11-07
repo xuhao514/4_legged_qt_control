@@ -103,7 +103,7 @@ void WalkLegClass::calPos(float _t_now)
     {
         walk_leg_state.in_air_else_floor = false;
         //if(t_floor>WalkTeMin)
-            Bezier(&x,&y,wx2,wy2,2,(_t_now-t_air)/t_floor);	    //均匀的直线
+        Bezier(&x,&y,wx2,wy2,2,(_t_now-t_air)/t_floor);	    //均匀的直线
         //else                                                                         // 因为电机速度达不到要求 所以直线两端点数密集  //MIT的论文里有描述原因  有空看下
         //    Bezier(&x,&y,wx,wy ,6,(tn_now-t_air)/t_floor);	     //两头密中间稀的直线    目前好像还不稳定
     }
@@ -133,7 +133,7 @@ void WalkLegClass::reStart()  //有问题 没找到
     walk_leg_state.in_air_else_floor = false;
     walk_leg_state.start_act =false;
 
-    move2InitPos();
+    move2InitPos(1000);
 
 }
 

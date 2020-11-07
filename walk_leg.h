@@ -19,6 +19,7 @@ class WalkLegClass
 {
 public:
     //(x0,y0) 行走曲线中心点 L:步长 H:步高  _t_floor:着地相时长 _tair_tfloor_scale:Tair与t_floor的比值 _start_scale_pos:起始位置在整个轨迹的比值,从腾空相开始 _delayt_tfloor_scale：delay_t与t_floor的比值
+    //当设定起始位置相同时，使用_delayt_tfloor_scale来获得相位差；  设定起始位置为相位初始位置时， _delayt_tfloor_scale为0，_start_scale_pos设定成相位差处的值
     void init(LegClass &_leg,float _x0,float _y0,float _L,float _H0,float _t_floor,float _tair_tfloor_scale,float _start_scale_pos,float _delayt_tfloor_scale,int _forward);
     void walkUpdate(float _dt);
     float setLegSpeed(float speed,float _te);

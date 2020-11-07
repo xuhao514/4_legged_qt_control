@@ -16,7 +16,6 @@
 #include <QMessageBox>
 
 
-
 namespace Ui {
 class BluetoothProxy;
 }
@@ -27,7 +26,7 @@ class BluetoothProxy : public QDialog
     Q_OBJECT
 
 public:
-    explicit BluetoothProxy(QWidget *parent = nullptr);
+    explicit BluetoothProxy(QWidget *parent = nullptr,bool _default_connect = true);  //_default_connect:开始连接默认设备
     ~BluetoothProxy();
     void openBlueTeeth();
     void closeBlueTeeth();
@@ -64,7 +63,8 @@ private:
     bool is_find_finished;
     bool is_connected;
     bool checkPermission();
-
+    QString default_device="hc05";  //默认连接的设备名字
+    bool default_connect;
 };
 
 #endif // BLUETOOTHPROXY_H

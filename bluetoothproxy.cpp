@@ -4,7 +4,7 @@
 //#define ACCESS_COARSE_LOCATION "android.Manifest.permission.ACCESS_COARSE_LOCATION"
 static const QLatin1String serviceUuid("00001101-0000-1000-8000-00805F9B34FB");
 
-BluetoothProxy::BluetoothProxy(QWidget *parent) :
+BluetoothProxy::BluetoothProxy(QWidget *parent,bool _default_connect ) :
     QDialog(parent),
     ui(new Ui::BluetoothProxy)
 {
@@ -32,6 +32,13 @@ BluetoothProxy::BluetoothProxy(QWidget *parent) :
                  );
 
     blueReadArray.resize(1024);
+
+    default_connect = _default_connect;
+    if(default_connect)
+    {
+        openBlueTeeth();
+        findDevices();
+    }
 }
 
 BluetoothProxy::~BluetoothProxy()
@@ -72,7 +79,15 @@ void BluetoothProxy::addBlueToothDevicesToList( const QBluetoothDeviceInfo &info
 {
     QString label = QString("%1 %2").arg(info.address().toString()).arg(info.name());
     qDebug()<<label;
-
+    if(default_connect)
+    {
+        if(info.name() == default_device)
+        {
+            QString _msg ="The device:"+ default_device+" is connecting...";
+            QMessageBox::information(this,tr("Info"),_msg);
+            socket->connectToService(info.address(), QBluetoothUuid(serviceUuid) ,QIODevice::ReadWrite);
+        }
+    }
     QList<QListWidgetItem *> items = ui->list->findItems(label, Qt::MatchExactly);
 
    if (items.empty()) {
@@ -85,6 +100,7 @@ void BluetoothProxy::addBlueToothDevicesToList( const QBluetoothDeviceInfo &info
        item->setSizeHint(QSize(60,60));
        ui->list->addItem(item);
    }
+
 }
 
 
@@ -166,7 +182,7 @@ void BluetoothProxy::on_list_itemActivated(QListWidgetItem *item)
 {
     QString text = item->text();
 
-    int index = text.indexOf(' ');
+    int index = text.indexOf(' '); //空格分割  地址/名字
 
     if (index == -1)
         return;
